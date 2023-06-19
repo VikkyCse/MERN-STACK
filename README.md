@@ -6,3 +6,4 @@ MongoDB — document database
 Express(.js) — Node.js web framework
 React(.js) — a client-side JavaScript framework
 Node(.js) — the premier JavaScript web server
+![image](https://github.com/VikkyCse/MERN-STACK/assets/126576893/ef5ac517-5e35-4d58-9fe5-fccb899a05fe)
