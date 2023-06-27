@@ -1,0 +1,196 @@
+CREATE TABLE students (
+  ID INT,
+  FirstName VARCHAR(50),
+  LastName VARCHAR(50),
+  Address VARCHAR(100),
+  City VARCHAR(50),
+  email VARCHAR(100)
+);
+
+INSERT INTO students (ID, FirstName, LastName, Address, City, email)
+VALUES
+  (1, 'vignesh', 'c', 'thindal', 'erode', '2021csec@sece.ac.in'),
+  (2, 'subash', 'e', 'raasipuram', 'namakkal', '2021csec@sece.ac.in'),
+  (3, 'dinesh', 't', 'udumalai', 'pollachi', '2021csec@sece.ac.in'),
+  (4, 'ravi', 't', 'eb nagar', 'erode', '2021csec@sece.ac.in'),
+  (5, 'ganesh', 't', 'udumalai', 'pollachi', '2021csec@sece.ac.in'),
+  (6, 'ram', 'u', 'omr', 'chennai', '2021csec@sece.ac.in'),
+  (7, 'ganeesh', 'k', 'kk nagar', 'madurai', '2021csec@sece.ac.in'),
+  (8, 'samyuktha', 'T', 'brindhavan colony', 'krishnagiri', '2021csec@sece.ac.in'),
+  (9, 'jyo', 'h', 'paris corner', 'chennai', '2021csec@sece.ac.in'),
+  (10, 'geetha', 'J', '100 feet road', 'coimbatore', '2021csec@sece.ac.in');
+/*
++------+-----------+----------+-------------------+-------------+---------------------+
+| ID   | FirstName | LastName | Address           | City        | email               |
++------+-----------+----------+-------------------+-------------+---------------------+
+|    1 | vignesh   | c        | thindal           | erode       | 2021csec@sece.ac.in |
+|    2 | subash    | e        | raasipuram        | namakkal    | 2021csec@sece.ac.in |
+|    3 | dinesh    | t        | udumalai          | pollachi    | 2021csec@sece.ac.in |
+|    4 | ravi      | t        | eb nagar          | erode       | 2021csec@sece.ac.in |
+|    5 | ganesh    | t        | udumalai          | pollachi    | 2021csec@sece.ac.in |
+|    6 | ram       | u        | omr               | chennai     | 2021csec@sece.ac.in |
+|    7 | ganeesh   | k        | kk nagar          | madurai     | 2021csec@sece.ac.in |
+|    8 | samyuktha | T        | brindhavan colony | krishnagiri | 2021csec@sece.ac.in |
+|    9 | jyo       | h        | paris corner      | chennai     | 2021csec@sece.ac.in |
+|   10 | geetha    | J        | 100 feet road     | coimbatore  | 2021csec@sece.ac.in |
++------+-----------+----------+-------------------+-------------+---------------------+
+
+
+*/
+
+CREATE TABLE st_number (
+  id INT,
+  phone INT
+);
+
+INSERT INTO st_number (id, phone)
+VALUES
+  (1, 123),
+  (2, 234),
+  (3, 4542),
+  (5, 675),
+  (6, 8504),
+  (9, 2435);
+
+
+
+/*
+
++------+-------+
+| id   | phone |
++------+-------+
+|    1 |   123 |
+|    2 |   234 |
+|    3 |  4542 |
+|    5 |   675 |
+|    6 |  8504 |
+|    9 |  2435 |
++------+-------+
+
+*/
+
+
+// A JOIN clause is used to combine rows from two or more tables, based on a related column between them
+
+// innerjoin
+
+SELECT students.ID, students.FirstName, students.LastName, students.Address, students.City, students.email, st_number.phone FROM students INNER JOIN st_number ON students.ID = st_number.id;
+/*
++----+-----------+----------+-------------------+-----------+---------------------+-------+
+| ID | FirstName | LastName | Address | City | email | phone |
++----+-----------+----------+-------------------+-----------+---------------------+-------+
+| 1 | vignesh | c | thindal | erode | 2021csec@sece.ac.in | 123 |
+| 2 | subash | e | raasipuram | namakkal | 2021csec@sece.ac.in | 234 |
+| 3 | dinesh | t | udumalai | pollachi | 2021csec@sece.ac.in | 4542 |
+| 5 | ganesh | t | udumalai | pollachi | 2021csec@sece.ac.in | 675 |
+| 6 | ram | u | omr | chennai | 2021csec@sece.ac.in | 8504 |
+| 9 | jyo | h | paris corner | chennai | 2021csec@sece.ac.in | 2435 |
++----+-----------+----------+-------------------+-----------+---------------------+-------+
+
+*/
+// left join 
+SELECT students.ID, students.FirstName, students.LastName, students.Address, students.City, students.email, st_number.phone FROM students LEFT JOIN st_number ON students.ID = st_number.id;
+
+/*
+
++----+-----------+----------+-------------------+-------------+---------------------+-------+
+| ID | FirstName | LastName | Address | City | email | phone |
++----+-----------+----------+-------------------+-------------+---------------------+-------+
+| 1 | vignesh | c | thindal | erode | 2021csec@sece.ac.in | 123 |
+| 2 | subash | e | raasipuram | namakkal | 2021csec@sece.ac.in | 234 |
+| 3 | dinesh | t | udumalai | pollachi | 2021csec@sece.ac.in | 4542 |
+| 4 | ravi | t | eb nagar | erode | 2021csec@sece.ac.in | NULL |
+| 5 | ganesh | t | udumalai | pollachi | 2021csec@sece.ac.in | 675 |
+| 6 | ram | u | omr | chennai | 2021csec@sece.ac.in | 8504 |
+| 7 | ganeesh | k | kk nagar | madurai | 2021csec@sece.ac.in | NULL |
+| 8 | samyuktha | T | brindhavan colony | krishnagiri | 2021csec@sece.ac.in | NULL |
+| 9 | jyo | h | paris corner | chennai | 2021csec@sece.ac.in | 2435 |
+| 10 | geetha | J | 100 feet road | coimbatore | 2021csec@sece.ac.in | NULL |
++----+-----------+----------+-------------------+-------------+---------------------+-------+
+
+*/
+
+// right join
+
+SELECT students.ID, students.FirstName, students.LastName, students.Address, students.City, students.email, st_number.phone FROM students RIGHT JOIN st_number ON students.ID = st_number.id;
+
+/*
+
++----+-----------+----------+-------------------+-------------+---------------------+-------+
+| ID | FirstName | LastName | Address | City | email | phone |
++----+-----------+----------+-------------------+-------------+---------------------+-------+
+| 1 | vignesh     | c | thindal    | erode    | 2021csec@sece.ac.in | 123   |
+| 2 | subash      | e | raasipuram | namakkal | 2021csec@sece.ac.in | 234   |
+| 3 | dinesh      | t | udumalai   | pollachi | 2021csec@sece.ac.in | 4542  |
+| 5 | ganesh      | t | udumalai   | pollachi | 2021csec@sece.ac.in | 675   |
+| 6 | ram         | u | omr        | chennai  | 2021csec@sece.ac.in | 8504  |
+| 9 | jyo         | h | paris corner | chennai| 2021csec@sece.ac.in | 2435  |
+NULL | NULL       | NULL | NULL | NULL | NULL | 543 |
+NULL | NULL       | NULL | NULL | NULL | NULL | 345 |
+NULL | NULL       | NULL | NULL | NULL | NULL | 789 |
+NULL | NULL       | NULL | NULL | NULL | NULL | 876 |
+NULL | NULL       | NULL | NULL | NULL | NULL | 567 |
+NULL | NULL       | NULL | NULL | NULL | NULL | 890 |
++----+-----------+----------+-------------------+-------------+---------------------+-------+
+
+*/
+
+// Grouping in ascending order
+SELECT ID, FirstName, LastName, Address, City, email FROM students GROUP BY ID, FirstName, LastName, Address, City, email ORDER BY ID ASC;
+
+/*
+
++----+-----------+----------+-------------------+-------------+---------------------+
+| ID | FirstName | LastName | Address | City | email |
++----+-----------+----------+-------------------+-------------+---------------------+
+| 1 | vignesh | c | thindal | erode | 2021csec@sece.ac.in |
+| 2 | subash | e | raasipuram | namakkal | 2021csec@sece.ac.in |
+| 3 | dinesh | t | udumalai | pollachi | 2021csec@sece.ac.in |
+| 4 | ravi | t | eb nagar | erode | 2021csec@sece.ac.in |
+| 5 | ganesh | t | udumalai | pollachi | 2021csec@sece.ac.in |
+| 6 | ram | u | omr | chennai | 2021csec@sece.ac.in |
+| 7 | ganeesh | k | kk nagar | madurai | 2021csec@sece.ac.in |
+| 8 | samyuktha | T | brindhavan colony | krishnagiri | 2021csec@sece.ac.in |
+| 9 | jyo | h | paris corner | chennai | 2021csec@sece.ac.in |
+| 10 | geetha | J | 100 feet road | coimbatore | 2021csec@sece.ac.in |
++----+-----------+----------+-------------------+-------------+---------------------+
+
+*/
+
+//Grouping in descending order
+SELECT ID, FirstName, LastName, Address, City, email FROM students GROUP BY ID, FirstName, LastName, Address, City, email ORDER BY ID DESC;
+
+/*
+
++----+-----------+----------+-------------------+-------------+---------------------+
+| ID | FirstName | LastName | Address | City | email |
++----+-----------+----------+-------------------+-------------+---------------------+
+| 10 | geetha | J | 100 feet road | coimbatore | 2021csec@sece.ac.in |
+| 9 | jyo | h | paris corner | chennai | 2021csec@sece.ac.in |
+| 8 | samyuktha | T | brindhavan colony | krishnagiri | 2021csec@sece.ac.in |
+| 7 | ganeesh | k | kk nagar | madurai | 2021csec@sece.ac.in |
+| 6 | ram | u | omr | chennai | 2021csec@sece.ac.in |
+| 5 | ganesh | t | udumalai | pollachi | 2021csec@sece.ac.in |
+| 4 | ravi | t | eb nagar | erode | 2021csec@sece.ac.in |
+| 3 | dinesh | t | udumalai | pollachi | 2021csec@sece.ac.in |
+| 2 | subash | e | raasipuram | namakkal | 2021csec@sece.ac.in |
+| 1 | vignesh | c | thindal | erode | 2021csec@sece.ac.in |
++----+-----------+----------+-------------------+-------------+---------------------+
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
