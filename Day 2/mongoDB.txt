@@ -29,7 +29,7 @@ db.yourCollectionName.insertMany([
     "Fuel": 1200,
     "image_url": "http://sample.com"
   },
-  // Add the remaining 17 records following the same structure
+ 
   {
     "name": "accord",
     "model": "LX",
@@ -224,4 +224,10 @@ db.yourCollectionName.insertMany([
 
 // this code will give us the output as whose mileage is above 20
 db.models.find({ "Mileage": { $gt: 20 } });
+db.models.find({ name: "Swift" });
+db.models.updateMany({ name: "Skoda" }, { $set: { fuel: "manual" } });
+db.models.find({ name: "Skoda" }).sort({ rented_user_count: 1 });
+db.models.find({ name: "Benz" }).sort({ Mileage: -1 });
+db.models.deleteOne({ name: "Tesla" });
+db.models.find();
 
